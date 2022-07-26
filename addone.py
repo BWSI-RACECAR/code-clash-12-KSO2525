@@ -30,14 +30,27 @@ class Solution:
         # return type: list
 
         # TODO: Write code below to return a list "ary" with the solution to the prompt
-        if ary[-1] == 9:
+        if ary[-1] == 9 and len(ary) == 1:
             if len(ary) > 1:
                 ary[-2] += 1
                 ary[-1] = 0
-            else:
-                ary = [1, 0]
-        else:
-            ary[-1] += 1
+        #    else:
+         #       ary = [1, 0]
+        #else:
+        #    ary[-1] += 1
+        ary[-1] += 1
+        for i in range(len(ary) - 1, -1, -1):
+            if ary[i] == 10:
+                if i != 0:
+                    ary[i-1] += 1
+                    ary[i] = 0
+                if i == 0:
+                    new_ary = [1, 0]
+                    for i in ary[i+1:]:
+                        new_ary.append(i)
+                    ary = new_ary
+
+
         return ary
 
 def main():
